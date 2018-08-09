@@ -13,7 +13,6 @@ documentation = "https://docs.rs/manuf/"
 repository = "https://github.com/flier/rust-manuf"
 
 [badges]
-gitlab = { repository = "https://github.com/flier/rust-manuf", branch = "master" }
 travis-ci = { repository = "flier/rust-manuf", branch = "master" }
 maintenance = { status = "experimental" }
 
