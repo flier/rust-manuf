@@ -1,6 +1,6 @@
-# rust-manuf provides Ethernet vendor codes, and well-known MAC addresses
+# rust-manuf
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Crates.io Version](https://img.shields.io/crates/v/manuf.svg)](https://crates.io/crates/manuf) [![Document](https://docs.rs/manuf/badge.svg)](https://docs.rs/manuf/) [![Build Status](https://travis-ci.org/flier/rust-manuf.svg?branch=master)](https://travis-ci.org/Geal/nom)
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Crates.io Version](https://img.shields.io/crates/v/manuf.svg)](https://crates.io/crates/manuf) [![Document](https://docs.rs/manuf/badge.svg)](https://docs.rs/manuf/) [![Build Status](https://travis-ci.org/flier/rust-manuf.svg?branch=master)](https://travis-ci.org/flier/rust-manuf)
 
 `rust-manuf` is rust library provides Ethernet vendor codes, and well-known MAC addresses
 
