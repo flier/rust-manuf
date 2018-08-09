@@ -1,0 +1,24 @@
+[package]
+name = "manuf"
+version = "0.1.0"
+authors = ["Flier Lu <flier.lu@gmail.com>"]
+
+description = "Ethernet vendor codes, and well-known MAC addresses"
+license = "MIT"
+readme = "README.md"
+keywords = ["ethernet", "mac", "vendor"]
+categories = ["network-programming"]
+
+documentation = "https://docs.rs/manuf/"
+repository = "https://github.com/flier/rust-manuf"
+
+[badges]
+gitlab = { repository = "https://github.com/flier/rust-manuf", branch = "master" }
+travis-ci = { repository = "flier/rust-manuf", branch = "master" }
+maintenance = { status = "experimental" }
+
+[dependencies]
+byteorder = "1.2"
+
+[build-dependencies]
+itertools = "0.7"
