@@ -32,7 +32,7 @@ pub fn parse<R: BufRead>(r: R) -> impl Iterator<Item = ((EtherAddr, u32), (Strin
     r.lines().flat_map(|line| line).flat_map(|line| {
         let line = line.trim();
 
-        if line.is_empty() || line.starts_with("#") {
+        if line.is_empty() || line.starts_with('#') {
             None
         } else {
             let (prefix_str, name, desc) = {

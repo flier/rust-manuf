@@ -23,7 +23,7 @@ Use `vendor` to find name and description base on an ethernet (MAC) address.
 
 ```rust
 assert_eq!(
-    manuf::vendor(&[0x8c, 0x85, 0x90, 0x0b, 0xcb, 0x9e]),
+    manuf::vendor([0x8c, 0x85, 0x90, 0x0b, 0xcb, 0x9e]),
     Some(("Apple", "Apple, Inc."))
 );
 ```
@@ -33,7 +33,7 @@ Use `prefix` to find vendor's prefix and mask for the ethernet (MAC) address.
 ```rust
 assert!(
     manuf::prefix("Apple")
-        .any(|prefix| prefix == (&[0x8c, 0x85, 0x90, 0x00, 0x00, 0x00], 24))
+        .any(|prefix| prefix == ([0x8c, 0x85, 0x90, 0x00, 0x00, 0x00], 24))
 );
 ```
 

@@ -16,7 +16,9 @@ fn main() {
     let mut out = File::create(&dest_path).unwrap();
 
     out.write_all(
-        b"#[doc(hidden)]\npub const VENDORS: &[((&EtherAddr, u64), (&str, &str))] = &[\n",
+        b"#[doc(hidden)]
+#[cfg_attr(feature = \"cargo-clippy\", allow(unreadable_literal, type_complexity))]
+pub const VENDORS: &[((EtherAddr, u64), (&str, &str))] = &[\n",
     ).unwrap();
 
     for ((prefix, prefix_len), (name, desc)) in parse(r) {
@@ -25,7 +27,7 @@ fn main() {
 
         out.write_all(
             format!(
-                "\t((&[{}], 0x{:x}), ({:?}, {:?})),\n",
+                "\t(([{}], 0x{:x}), ({:?}, {:?})),\n",
                 prefix_str, prefix_mask, name, desc
             ).as_bytes(),
         ).unwrap();
