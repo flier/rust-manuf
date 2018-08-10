@@ -6,27 +6,25 @@
 //! #[macro_use]
 //! extern crate manuf;
 //!
-//! # fn main() {
-//! assert_eq!(
-//!     manuf::vendor(&[0x8c, 0x85, 0x90, 0x0b, 0xcb, 0x9e]),
-//!     Some(("Apple", "Apple, Inc."))
-//! );
+//! fn main() {
+//!     assert_eq!(
+//!         manuf::vendor(&[0x8c, 0x85, 0x90, 0x0b, 0xcb, 0x9e]),
+//!         Some(("Apple", "Apple, Inc."))
+//!     );
 //!
-//! assert!(
-//!     manuf::prefix("Apple")
-//!         .any(|prefix| prefix == (&[0x8c, 0x85, 0x90, 0x00, 0x00, 0x00], 24))
-//! );
-//! # }
+//!     assert!(
+//!         manuf::prefix("Apple")
+//!             .any(|prefix| prefix == (&[0x8c, 0x85, 0x90, 0x00, 0x00, 0x00], 24))
+//!     );
+//! }
 //! ```
 extern crate byteorder;
 
+mod parse;
+
+pub use parse::{parse, EtherAddr, ETHER_ADDR_LEN};
+
 use byteorder::{ByteOrder, NetworkEndian};
-
-/// The number of bytes in an ethernet (MAC) address.
-pub const ETHER_ADDR_LEN: usize = 6;
-
-/// Structure of a 48-bit Ethernet address.
-pub type EtherAddr = [u8; ETHER_ADDR_LEN];
 
 include!(concat!(env!("OUT_DIR"), "/vendors.rs"));
 
@@ -83,6 +81,7 @@ mod tests {
 
     #[test]
     fn test_vendor() {
+        assert_eq!(VENDORS.len(), 34875);
         assert_eq!(
             vendor(&[0x8c, 0x85, 0x90, 0x0b, 0xcb, 0x9e]),
             Some(("Apple", "Apple, Inc."))
@@ -97,6 +96,10 @@ mod tests {
         assert_eq!(
             vendor(&[0xFC, 0xFF, 0xAA, 0x11, 0x22, 0x33]),
             Some(("IeeeRegi", "IEEE Registration Authority"))
+        );
+        assert_eq!(
+            vendor(&[0x50, 0x50, 0x2a, 0x00, 0x00, 0x00]),
+            Some(("Egardia", ""))
         );
         assert_eq!(vendor(&[0x0a, 0x00, 0x27, 0x00, 0x00, 0x00]), None);
 
