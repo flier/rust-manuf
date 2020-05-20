@@ -1,14 +1,13 @@
 [package]
 name = "manuf"
 version = "0.1.1"
+edition = "2018"
 authors = ["Flier Lu <flier.lu@gmail.com>"]
-
 description = "Ethernet vendor codes, and well-known MAC addresses"
 license = "MIT"
 readme = "README.md"
 keywords = ["ethernet", "mac", "vendor"]
 categories = ["network-programming"]
-
 documentation = "https://docs.rs/manuf/"
 repository = "https://github.com/flier/rust-manuf"
 
@@ -17,7 +16,7 @@ travis-ci = { repository = "flier/rust-manuf", branch = "master" }
 maintenance = { status = "experimental" }
 
 [dependencies]
-byteorder = "1.2"
+byteorder = "1.3"
 
 [build-dependencies]
-itertools = "0.7"
+itertools = "0.9"

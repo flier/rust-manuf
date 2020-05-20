@@ -17,20 +17,23 @@ fn main() {
 
     out.write_all(
         b"#[doc(hidden)]
-#[cfg_attr(feature = \"cargo-clippy\", allow(unreadable_literal, type_complexity))]
+#[allow(clippy::unreadable_literal, clippy::type_complexity)]
 pub const VENDORS: &[((EtherAddr, u64), (&str, &str))] = &[\n",
-    ).unwrap();
+    )
+    .unwrap();
 
     for ((prefix, prefix_len), (name, desc)) in parse(r) {
-        let prefix_str = itertools::join(prefix.into_iter().map(|n| format!("0x{:02x}", n)), ", ");
+        let prefix_str = itertools::join(prefix.iter().map(|n| format!("0x{:02x}", n)), ", ");
         let prefix_mask = ((1u64 << prefix_len) - 1) << (48 - prefix_len);
 
         out.write_all(
             format!(
                 "\t(([{}], 0x{:x}), ({:?}, {:?})),\n",
                 prefix_str, prefix_mask, name, desc
-            ).as_bytes(),
-        ).unwrap();
+            )
+            .as_bytes(),
+        )
+        .unwrap();
     }
 
     out.write_all(b"];\n").unwrap();
