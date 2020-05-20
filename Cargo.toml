@@ -1,6 +1,6 @@
 [package]
 name = "manuf"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2018"
 authors = ["Flier Lu <flier.lu@gmail.com>"]
 description = "Ethernet vendor codes, and well-known MAC addresses"
